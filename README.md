@@ -41,21 +41,90 @@ The coronavirus crisis has shown that not being digitally connected, or not havi
  
 # Analysis
 
-Notes: 
-- I have already set up my tables and inserted values from the dataset into my database. You can check out this prerequisite step over here:
-- Data was only collected in US counties where the population was greater than 65K.
+Note: 
+- I have completed the prerequisite step of importing the dataset into PostgreSQL.
+  - To view this go to my [Create Tables & Import Data with SQL repository](https://github.com/delaney-data/SQL-CreateTablesImport)
+- According to the [source data](https://www.kaggle.com/datasets/madaha/people-without-internet), data was only collected in US counties where the population was greater than 65K in the year 2016.
+>Content: This dataset contains data for counties with population over 65000, compiled from the 2016 ACS 1-year estimate. ACS 1-year estimates only summarize data for large geographic areas over 65000 population. It provides sufficient data for us to gain insight into internet use.
 
-### Question 1: What is the number of people without internet per US State?
-Approach: To answer this question, I will need to use some math to find the <b>number</b> (integer) of the population without internet. The data set only provided a <b>percentage</b> column/values for those without internet. I will add a new column to the table which calculates the number using the total population number and percantage. 
 
-  SQL statements/commands we'll need to use to solve the question:
+### Question 1: What are the <b>top 10 states</b> with the highest <b>number</b> of people without internet?
+
+SQL statements/commands we'll need to use to solve the question:
 - `ALTER TABLE`,`ADD COLUMN`
 - `UPDATE`, `SET`
   - Math Operators and Subqueries
-- `SUM`, `GROUP BY`
+- `SUM`, `GROUP BY`, `ORDER BY`, `LIMIT`
 
-Solution:
+### Q1 Solution:
+
+First, we'll need to add a new column to the `county_pop` table. I need this column to be a decimal type so I can run mathmatical operations/aggregates with it. I will name the column pop_no_internet.
+
+```sql
+ALTER TABLE county_pop
+ ADD COLUMN pop_no_internet DECIMAL;
+```
+
+Next, let's insert the data into the new column using math operators. The SET command will add your desired values. 
+
+```sql
+UPDATE county_pop
+ SET pop_no_internet = (percent_no_internet * 0.01) * p_total;
+
+--- percent_no_internet column has decimal value percentage, we'll need to multiply (*) by 0.01 first, then multiply the result by p_total which has the total number of the population
+```
+View the results:
+
+```sql
+
+SELECT 
+	county,
+	state,
+	ROUND(percent_no_internet) AS percentage_no_internet,
+	ROUND(pop_no_internet) AS population_no_internet,
+	p_total as total_population
+
+FROM county_pop;
+
+--- Used the ROUND statment to reduce decimal points and using the AS to create an Alias for clarity
+```
+<img src="https://i.imgur.com/VJAy8Nz.png" height = "50%" widge= "50%" alt= "Q1 SQL Results">
+
+We can now use begin using the new population_no_internet column with `SUM` and `GROUP BY` to answer the original question of:
+
+<i>"What are the top 10 states with the highest <b>number</b> of people without internet?"</i>
+
+```sql
+ SELECT county_pop.state AS "State",
+    SUM(ROUND(county_pop.pop_no_internet)) AS "Population without Internet" --- Adding all the values to get the TOTAL per county
+
+FROM county_pop
+GROUP BY county_pop.state --- Grouping the counties per state
+ORDER BY SUM(pop_no_internet) DESC --- Organizing by the largest to the smallest
+LIMIT 10; ---Limiting to the top 10 results
+
+```
+### Q1 Data Insights: 
+
+Top 10 States where there's the highest amount of people without internet accces. 
+
+| State | Population without Internet |
+| ------------- | ------------- |
+|CA|	 4,615,690| 
+|TX|	 3,684,136| 
+|FL|	 2,864,638| 
+|NY|	 2,737,094| 
+|PA|	 1,901,010| 
+|IL|	 1,494,638| 
+|OH|	 1,480,742| 
+|MI|	 1,267,995| 
+|NC|	 1,216,635| 
+|NJ|	 1,114,282| 
+<hr>
+
 
 ### Question 2: Which state has the highest percentage of those without internet? The Lowest?
+[In Progress]
 
 ### Question 2.1: Of the highest and lowest, what is the number of those living below the poverty line?
+[In Progess]
