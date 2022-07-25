@@ -93,7 +93,7 @@ SELECT
 
 FROM county_pop;
 
---- Used the ROUND statment to reduce decimal points and using the AS to create an Alias for clarity
+--- Used the ROUND statement to reduce decimal points and using AS to create an ALIAS for clarity
 ```
 <img src="https://i.imgur.com/VJAy8Nz.png" height = "50%" widge= "50%" alt= "Q1 SQL Results">
 
@@ -106,9 +106,9 @@ We can now use begin using the new population_no_internet column with `SUM` and 
     SUM(ROUND(county_pop.pop_no_internet)) AS "Population without Internet" --- Adding all the values to get the TOTAL per county
 
 FROM county_pop
-GROUP BY county_pop.state --- Grouping the counties per state
-ORDER BY SUM(pop_no_internet) DESC --- Organizing by the largest to the smallest
-LIMIT 10; ---Limiting to the top 10 results
+GROUP BY county_pop.state --- Grouping by state, which will roll up all the counties
+ORDER BY SUM(pop_no_internet) DESC --- Organizing by the largest to the smallest integers with DESC
+LIMIT 10; --- Limiting to the top 10 results
 
 ```
 ### Q1 Data Insights: 
