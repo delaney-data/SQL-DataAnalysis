@@ -39,4 +39,23 @@ The coronavirus crisis has shown that not being digitally connected, or not havi
  
  I will be analyzing data focusing specifically on the <b>Lack of Internet</b>.
  
+# Analysis
 
+Notes: 
+- I have already set up my tables and inserted values from the dataset into my database. You can check out this prerequisite step over here:
+- Data was only collected in US counties where the population was greater than 65K.
+
+### Question 1: What is the number of people without internet per US State?
+Approach: To answer this question, I will need to use some math to find the <b>number</b> (integer) of the population without internet. The data set only provided a <b>percentage</b> column/values for those without internet. I will add a new column to the table which calculates the number using the total population number and percantage. 
+
+  SQL statements/commands we'll need to use to solve the question:
+- `ALTER TABLE`,`ADD COLUMN`
+- `UPDATE`, `SET`
+  - Math Operators and Subqueries
+- `SUM`, `GROUP BY`
+
+Solution:
+
+### Question 2: Which state has the highest percentage of those without internet? The Lowest?
+
+### Question 2.1: Of the highest and lowest, what is the number of those living below the poverty line?
