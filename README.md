@@ -1,15 +1,22 @@
 # SQL Data Analysis
- Answering questions about data using SQL.
+A demonstration of creating SQL queries to provide insights into data. 
 
-## Overview
-Using a dataset from Kaggle, we will provide insights on using SQL. 
+## Table of Contents
+1) [Context of the Dataset](https://github.com/delaney-data/SQL-DataAnalysis#the-problem--the-digital-divide-)
+2) Data Analysis
+	- [Q1 What are the top 10 states with the highest number of people without internet?](https://github.com/delaney-data/SQL-DataAnalysis#question-1-what-are-the-top-10-states-with-the-highest-number-of-people-without-internet)
+		- [Solution](https://github.com/delaney-data/SQL-DataAnalysis#q1-solution)
+		- [Results & Insights](https://github.com/delaney-data/SQL-DataAnalysis#q1-data-insights)
+	- Q2 [In Progess]
+	- Q3 [In Progress]
+<hr>
 
 <strong>Language and Utilities Used:</strong>
 - Language: `SQL`
 - DBMS: [PostgreSQL 14](https://www.postgresql.org/)
 - GUI: [PgAdmin 4](https://www.pgadmin.org/) on Windows 10
 - Data Source: [USA People without Internet Access in 2016](https://www.kaggle.com/datasets/madaha/people-without-internet/)
-- Notes on Source: Data was only collected in US counties where the population was greater than 65K
+
 
 
 ## The Problem [ The Digital Divide ]
