@@ -1,5 +1,5 @@
 # SQL Data Analysis
-A demonstration of to analyze and answer questions about data using SQL. 
+ Answering questions about data using SQL.
 
 ## Overview
 Using a dataset from Kaggle, we will provide insights on using SQL. 
@@ -31,6 +31,7 @@ The coronavirus crisis has shown that not being digitally connected, or not havi
     - Online Schooling
     - Online Education resources
 - Restricted from internet-only services :no_entry:
+    - Account Activation / Cancellation
     - Paying Bills Online
     - Paperless Documentation
     - Ordering Services (Food, Supplies, etc)
