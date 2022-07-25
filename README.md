@@ -108,7 +108,7 @@ LIMIT 10; ---Limiting to the top 10 results
 
 Top 10 States where there's the highest amount of people without internet accces. 
 
-| State | Population without Internet |
+| State | Population without Internet | 
 | ------------- | ------------- |
 |CA|	 4,615,690| 
 |TX|	 3,684,136| 
@@ -120,6 +120,11 @@ Top 10 States where there's the highest amount of people without internet accces
 |MI|	 1,267,995| 
 |NC|	 1,216,635| 
 |NJ|	 1,114,282| 
+
+Overlapping with total population vs total without internet access. 
+![image](https://user-images.githubusercontent.com/66498659/180867482-0fa5e263-cf11-43f3-84a7-2043d0ee400d.png)
+
+
 <hr>
 
 
