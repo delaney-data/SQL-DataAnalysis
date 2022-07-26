@@ -74,7 +74,7 @@ According to the [source data](https://www.kaggle.com/datasets/madaha/people-wit
 |percent_no_internet| numeric| Percentage without Internet|
 |**pop_no_internet |decimal | Population in numbers without Internet|
 
-**<sub> I manually added new this column (as it did not exist in the dataset) and inserted values into the rows in order to solve our [Analysis Question #1](https://github.com/delaney-data/SQL-DataAnalysis#q1-solution).</sub>
+**<sub> I manually added new this column (as it did not exist in the dataset) and inserted values into the rows in order to solve our [Analysis Question #1](https://github.com/delaney-data/SQL-DataAnalysis#q1-solution-calculate-the-value-of-a-percentage-first).</sub>
 
 
 ### `Education_Income` Table
