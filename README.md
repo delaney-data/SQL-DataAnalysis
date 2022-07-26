@@ -6,8 +6,8 @@ A demonstration of creating SQL queries to provide insights into a data set.
 2) [Database Schema](https://github.com/delaney-data/SQL-DataAnalysis/blob/main/README.md#database-schema)
 3) Data Analysis - Question #1
 	- [What are the top 10 states with the highest number of people without internet?](https://github.com/delaney-data/SQL-DataAnalysis#question-1-what-are-the-top-10-states-with-the-highest-number-of-people-without-internet)
-		- [Part 1: Calculate the value of a Percentage] 
-		- [Part 2: Solution](https://github.com/delaney-data/SQL-DataAnalysis#q1-solution)
+		- [Part 1: Calculate the value of a Percentage](https://github.com/delaney-data/SQL-DataAnalysis/blob/main/README.md#q1-solution-first-step) 
+		- [Part 2: Solution](https://github.com/delaney-data/SQL-DataAnalysis/blob/main/README.md#q1-solution-second-step)
 		- [Results & Insights](https://github.com/delaney-data/SQL-DataAnalysis#q1-data-insights)
 4) Data Analysis - Question #2
 	- [In Progess]
@@ -105,7 +105,7 @@ SQL statements/commands we'll need to use to solve the question:
   - Math Operators and Subqueries
 - `SUM`, `GROUP BY`, `ORDER BY`, `LIMIT`
 
-### Q1 Solution (first step):
+### Q1 Solution (calculate the value of a percentage first):
 
 First, we'll need to add a new column to the `county_pop` table, as the question calls for values we do not have yet (number without internet). We can find those values with the percentage_no_internet values and p_total values. 
 
