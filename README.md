@@ -6,7 +6,7 @@ A demonstration of creating SQL queries to provide insights into a data set.
 2) [Database Schema](https://github.com/delaney-data/SQL-DataAnalysis/blob/main/README.md#database-schema)
 3) Data Analysis - Question #1
 	- [What are the top 10 states with the highest number of people without internet?](https://github.com/delaney-data/SQL-DataAnalysis#question-1-what-are-the-top-10-states-with-the-highest-number-of-people-without-internet)
-		- [Part 1: Calculate the value of a Percentage](https://github.com/delaney-data/SQL-DataAnalysis/blob/main/README.md#q1-solution-first-step) 
+		- [Part 1: Calculate the value of a Percentage](https://github.com/delaney-data/SQL-DataAnalysis#q1-solution-calculate-the-value-of-a-percentage-first) 
 		- [Part 2: Solution](https://github.com/delaney-data/SQL-DataAnalysis/blob/main/README.md#q1-solution-second-step)
 		- [Results & Insights](https://github.com/delaney-data/SQL-DataAnalysis#q1-data-insights)
 4) Data Analysis - Question #2
