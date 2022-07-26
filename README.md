@@ -3,12 +3,15 @@ A demonstration of creating SQL queries to provide insights into a data set.
 
 ### Table of Contents
 1) [Context of the Dataset](https://github.com/delaney-data/SQL-DataAnalysis#the-problem--the-digital-divide-)
-2) Data Analysis
-	- [Q1 What are the top 10 states with the highest number of people without internet?](https://github.com/delaney-data/SQL-DataAnalysis#question-1-what-are-the-top-10-states-with-the-highest-number-of-people-without-internet)
-		- [Solution](https://github.com/delaney-data/SQL-DataAnalysis#q1-solution)
+2) [Database Schema](https://github.com/delaney-data/SQL-DataAnalysis/blob/main/README.md#database-schema)
+3) Data Analysis - Question #1
+	- [What are the top 10 states with the highest number of people without internet?](https://github.com/delaney-data/SQL-DataAnalysis#question-1-what-are-the-top-10-states-with-the-highest-number-of-people-without-internet)
+		- [Part 1: Calculate the value of a Percentage] 
+		- [Part 2: Solution](https://github.com/delaney-data/SQL-DataAnalysis#q1-solution)
 		- [Results & Insights](https://github.com/delaney-data/SQL-DataAnalysis#q1-data-insights)
-	- Q2 [In Progess]
-	- Q3 [In Progress]
+4) Data Analysis - Question #2
+	- [In Progess]
+
 
 
 <strong>Language and Utilities Used:</strong>
@@ -55,11 +58,12 @@ According to the [source data](https://www.kaggle.com/datasets/madaha/people-wit
 
 ## Database Schema
 
-`County_Pop` Table
+### `County_Pop` Table
 | Column Name   |  Data Type, Constraint |Description |
 |----------|:-------------:|:------|
 |id_pop| integer, primary key | Used as primary key for the county population table.|
 |county| varchar| Each county per state|
+|state| varchar| Each state|
 |p_total| integer| Total Population in numbers per county |
 |p_white| integer| Population grouped by race: white|
 | p_black |integer| Population grouped by race: black|
@@ -71,6 +75,25 @@ According to the [source data](https://www.kaggle.com/datasets/madaha/people-wit
 |**pop_no_internet |decimal | Population in numbers without Internet|
 
 **<sub> I manually added new this column (as it did not exist in the dataset) and inserted values into the rows in order to solve our [Analysis Question #1](https://github.com/delaney-data/SQL-DataAnalysis#q1-solution).</sub>
+
+
+### `Education_Income` Table
+| Column Name   |  Data Type, Constraint |Description |
+|----------|:-------------:|:------|
+|id | integer, primary key | Used as primary key for the education and income table.|
+|county| varchar| Each county per state|
+|state| varchar| Each state|
+|p_below_middle_school| integer| Education level per population: Below Middle School|
+|p_some_high_school| integer| Education level per population: Some High School|
+|p_high_school_equivalent| integer| Education level per population: High School Equivalent|
+|p_some_college integer| integer | Education level per population: Some College |
+|p_bachelor_and_above |integer| Education level per population: Bachelors and above|
+|p_below_poverty| integer| Income Level per population: Below Poverty|
+|median_age |numeric| Median age of household per county|
+|median_household_income| numeric | Median Household Income per county|
+|median_rent_per_income |numeric | Median Rental Income per county|
+
+
 
 # Data Analysis
 
@@ -84,7 +107,9 @@ SQL statements/commands we'll need to use to solve the question:
 
 ### Q1 Solution (first step):
 
-First, we'll need to add a new column to the `county_pop` table. I need this column to be a decimal type so I can run mathmatical operations/aggregates with it. I will name the column pop_no_internet.
+First, we'll need to add a new column to the `county_pop` table, as the question calls for values we do not have yet (number without internet). We can find those values with the percentage_no_internet values and p_total values. 
+
+The new column will be a decimal type so I can run mathmatical operations/aggregates with it. I will name the column pop_no_internet.
 
 ```sql
 ALTER TABLE county_pop
@@ -97,7 +122,9 @@ Next, let's insert the data into the new column using math operators. The SET co
 UPDATE county_pop
  SET pop_no_internet = (percent_no_internet * 0.01) * p_total;
 
---- percent_no_internet column has decimal value percentage, we'll need to multiply (*) by 0.01 first, then multiply the result by p_total which has the total number of the population
+-- SQL executes in order of operations, starting with anything in parathesis first 
+-- Percent_no_internet column has decimal value percentage
+-- So we'll need to multiply (*) by 0.01 first, then multiply the result by p_total which has the total number of the population
 ```
 View the results:
 
@@ -112,7 +139,7 @@ SELECT
 
 FROM county_pop;
 
---- Used the ROUND statement to reduce decimal points and using AS to create an ALIAS for clarity
+-- I enclosed the columns with a ROUND statement to reduce decimal points and used AS to create an ALIAS for clarity
 ```
 <img src="https://i.imgur.com/VJAy8Nz.png" height = "50%" widge= "50%" alt= "Q1 SQL Results">
 
@@ -123,12 +150,12 @@ We can now use begin using the new population_no_internet column with `SUM` and 
 
 ```sql
  SELECT county_pop.state AS "State",
-    SUM(ROUND(county_pop.pop_no_internet)) AS "Population without Internet" --- Adding all the values to get the TOTAL per county
+    SUM(ROUND(county_pop.pop_no_internet)) AS "Population without Internet" -- Adding all the values to get the TOTAL per county
 
 FROM county_pop
-GROUP BY county_pop.state --- Grouping by state, which will roll up all the counties
-ORDER BY SUM(pop_no_internet) DESC --- Organizing by the largest to the smallest integers with DESC
-LIMIT 10; --- Limiting to the top 10 results
+GROUP BY county_pop.state -- Grouping by state, which will roll up all the counties
+ORDER BY SUM(pop_no_internet) DESC -- Organizing by the largest to the smallest integers with DESC
+LIMIT 10; -- Limiting to the top 10 results
 
 ```
 ### Q1 Data Insights: 
