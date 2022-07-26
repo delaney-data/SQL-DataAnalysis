@@ -99,11 +99,11 @@ According to the [source data](https://www.kaggle.com/datasets/madaha/people-wit
 
 ### Question 1: What are the <b>top 10 states</b> with the highest <b>number</b> of people without internet?
 
-SQL statements/commands we'll need to use to solve the question:
-- `ALTER TABLE`,`ADD COLUMN`
-- `UPDATE`, `SET`
-  - Math Operators and Subqueries
-- `SUM`, `GROUP BY`, `ORDER BY`, `LIMIT`
+	SQL statements/commands needed to solve the question
+	
+	1. ALTER TABLE, ADD COLUMN
+	2. UPDATE, SET, Math Operators
+	3. SUM, GROUP BY, ORDER BY, LIMIT
 
 ### Q1 Solution (calculate the value of a percentage first):
 
