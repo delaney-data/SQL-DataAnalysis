@@ -1,7 +1,7 @@
 # SQL Data Analysis
-A demonstration of creating SQL queries to provide insights into data. 
+A demonstration of creating SQL queries to provide insights into a data set. 
 
-## Table of Contents
+### Table of Contents
 1) [Context of the Dataset](https://github.com/delaney-data/SQL-DataAnalysis#the-problem--the-digital-divide-)
 2) Data Analysis
 	- [Q1 What are the top 10 states with the highest number of people without internet?](https://github.com/delaney-data/SQL-DataAnalysis#question-1-what-are-the-top-10-states-with-the-highest-number-of-people-without-internet)
@@ -9,7 +9,7 @@ A demonstration of creating SQL queries to provide insights into data.
 		- [Results & Insights](https://github.com/delaney-data/SQL-DataAnalysis#q1-data-insights)
 	- Q2 [In Progess]
 	- Q3 [In Progress]
-<hr>
+
 
 <strong>Language and Utilities Used:</strong>
 - Language: `SQL`
@@ -27,30 +27,52 @@ As the technology in the world continues to advance and more services are exclus
 The Digital Divide issue is complex and is a culmination of a Lack of Technology, a Lack of Internet Access and a Lack of Digital Literacy.
 The coronavirus crisis has shown that not being digitally connected, or not having internet access in the household, can result in negative affects that range from: 
 
-- Lack of job opportunities & employment :technologist:
-    - Remote or Hybrid work
-    - Applying to Jobs
-    - Lack of Job-ready Skills (navigating the internet, programs, etc)
-- Lack of educational resources :books:
-    - Online Schooling
-    - Online Education resources
-- Restricted from internet-only services :no_entry:
-    - Account Activation / Cancellation
-    - Paying Bills Online
-    - Paperless Documentation
-    - Ordering Services (Food, Supplies, etc)
-    - Smart Devices that require internet to fully function
+:technologist: Lack of job opportunities & employment 
+   - Remote or Hybrid work
+   - Applying to Jobs
+   - Lack of Job-ready Skills (navigating the internet, programs, etc)
  
- I will be analyzing data focusing specifically on the <b>Lack of Internet</b>.
+ :books: Lack of educational resources 
+   - Online Schooling
+   - Online Education resources
+  
+  :no_entry: Restricted from internet-only services
+   - Account Activation / Cancellation
+   - Paying Bills Online
+   - Paperless Documentation
+   - Ordering Services (Food, Supplies, etc)
+   - Smart Devices that require internet to fully function
  
-# Analysis
 
-Note: 
-- I have completed the prerequisite step of importing the dataset into PostgreSQL.
-  - To view this go to my [Create Tables & Import Data with SQL repository](https://github.com/delaney-data/SQL-CreateTablesImport)
-- According to the [source data](https://www.kaggle.com/datasets/madaha/people-without-internet), data was only collected in US counties where the population was greater than 65K in the year 2016.
+## Notes & Prerequisites
+I will be analyzing data focusing specifically on the <b>Lack of Internet</b>.
+
+Prior to this chapter, I have completed the prerequisite step of importing the dataset into PostgreSQL.
+  - View my tutorial here: [Create Tables & Import Data with SQL repository](https://github.com/delaney-data/SQL-CreateTablesImport)
+  
+According to the [source data](https://www.kaggle.com/datasets/madaha/people-without-internet), data was only collected in US counties where the population was greater than 65K in the year 2016.
 >Content: This dataset contains data for counties with population over 65000, compiled from the 2016 ACS 1-year estimate. ACS 1-year estimates only summarize data for large geographic areas over 65000 population. It provides sufficient data for us to gain insight into internet use.
 
+## Database Schema
+
+`County_Pop` Table
+| Column Name   |  Data Type, Constraint |Description |
+|----------|:-------------:|:------|
+|id_pop| integer, primary key | Used as primary key for the county population table.|
+|county| varchar| Each county per state|
+|p_total| integer| Total Population in numbers per county |
+|p_white| integer| Population grouped by race: white|
+| p_black |integer| Population grouped by race: black|
+|p_asian |integer|Population grouped by race: asian|
+|p_native |integer|Population grouped by race: native|
+|p_hawaiian |integer|Population grouped by race: hawaiian|
+|p_others |integer|Population grouped by race: other|
+|percent_no_internet| numeric| Percentage without Internet|
+|**pop_no_internet |decimal | Population in numbers without Internet|
+
+**<sub> I manually added new this column (as it did not exist in the dataset) and inserted values into the rows in order to solve our [Analysis Question #1](https://github.com/delaney-data/SQL-DataAnalysis#q1-solution).</sub>
+
+# Data Analysis
 
 ### Question 1: What are the <b>top 10 states</b> with the highest <b>number</b> of people without internet?
 
@@ -60,7 +82,7 @@ SQL statements/commands we'll need to use to solve the question:
   - Math Operators and Subqueries
 - `SUM`, `GROUP BY`, `ORDER BY`, `LIMIT`
 
-### Q1 Solution:
+### Q1 Solution (first step):
 
 First, we'll need to add a new column to the `county_pop` table. I need this column to be a decimal type so I can run mathmatical operations/aggregates with it. I will name the column pop_no_internet.
 
@@ -94,6 +116,7 @@ FROM county_pop;
 ```
 <img src="https://i.imgur.com/VJAy8Nz.png" height = "50%" widge= "50%" alt= "Q1 SQL Results">
 
+### Q1 Solution (second step):
 We can now use begin using the new population_no_internet column with `SUM` and `GROUP BY` to answer the original question of:
 
 <i>"What are the top 10 states with the highest <b>number</b> of people without internet?"</i>
