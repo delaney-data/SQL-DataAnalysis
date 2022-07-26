@@ -22,14 +22,11 @@ A demonstration of creating SQL queries to provide insights into data.
 ## The Problem [ The Digital Divide ]
 As the technology in the world continues to advance and more services are exclusively accessed via the Internet, the impact of the Digital Divide (a gap between those who have access to digital technology and those who do not) can be felt harder to those on the receiving end.
 
-<img src="https://uspirg.org/sites/pirg/files/Digital%20Divide%20Blog.png">
+<p align="center"><img src="https://uspirg.org/sites/pirg/files/Digital%20Divide%20Blog.png"></p align>
 
-The Digital Divide issue is complex and is a culmination of: 
-- Lack of Technology
-- Lack of Internet Access
-- Lack of Digital Literacy
+The Digital Divide issue is complex and is a culmination of a Lack of Technology, a Lack of Internet Access and a Lack of Digital Literacy.
+The coronavirus crisis has shown that not being digitally connected, or not having internet access in the household, can result in negative affects that range from: 
 
-The coronavirus crisis has shown that not being digitally connected, or not having internet access, can result in negative consequences that range from: 
 - Lack of job opportunities & employment :technologist:
     - Remote or Hybrid work
     - Applying to Jobs
