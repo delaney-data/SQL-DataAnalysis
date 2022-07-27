@@ -1,7 +1,23 @@
-# SQL Data Analysis
-A demonstration of creating SQL queries to provide insights into a data set. 
+# Data Analysis with SQL
+A project walk-through using intermediate SQL statements to answer questions and provide analytical insights for Data Science or Business Intelligence from a database.
+This project assumes the reader knows the basic syntax and select statements.
 
-### Table of Contents
+### SQL concepts in the project:
+- Database 
+	- Altering tables, creating new columns
+	- Inserting values, Arithmetic Operators
+	- Views
+- Functions
+	- Aggregating values
+- SQL statements using `JOIN`, `GROUP BY`, `LIMIT`
+
+### Utilities & Enviroments Used:
+- DBMS: [PostgreSQL 14](https://www.postgresql.org/)
+- GUI: [PgAdmin 4](https://www.pgadmin.org/) on Windows 10
+- Data Source: [USA People without Internet Access in 2016](https://www.kaggle.com/datasets/madaha/people-without-internet/)
+
+
+# Table of Contents
 1) [Context of the Dataset](https://github.com/delaney-data/SQL-DataAnalysis#the-problem--the-digital-divide-)
 2) [Database Schema](https://github.com/delaney-data/SQL-DataAnalysis#database-schema)
 3) Data Analysis - Question #1
@@ -12,13 +28,6 @@ A demonstration of creating SQL queries to provide insights into a data set.
 4) Data Analysis - Question #2
 	- [In Progess]
 
-
-
-<strong>Language and Utilities Used:</strong>
-- Language: `SQL`
-- DBMS: [PostgreSQL 14](https://www.postgresql.org/)
-- GUI: [PgAdmin 4](https://www.pgadmin.org/) on Windows 10
-- Data Source: [USA People without Internet Access in 2016](https://www.kaggle.com/datasets/madaha/people-without-internet/)
 
 
 
@@ -50,10 +59,12 @@ The coronavirus crisis has shown that not being digitally connected, or not havi
 ## Notes & Prerequisites
 I will be analyzing data focusing specifically on the <b>Lack of Internet</b>.
 
-Prior to this chapter, I have completed the prerequisite step of importing the dataset into PostgreSQL.
-  - View my tutorial here: [Create Tables & Import Data with SQL repository](https://github.com/delaney-data/SQL-CreateTablesImport)
+Prior to this chapter, I have completed the prerequisite step of importing the dataset into PostgreSQL database.
+  - View my tutorial here: [Create Tables & Import Data with SQL](https://github.com/delaney-data/SQL-CreateTablesImport) repository
   
-According to the [source data](https://www.kaggle.com/datasets/madaha/people-without-internet), data was only collected in US counties where the population was greater than 65K in the year 2016.
+A note on the dataset: 
+	
+- According to the [source data](https://www.kaggle.com/datasets/madaha/people-without-internet), data in the file was only collected in US counties where the population was greater than 65K in the year 2016.
 >Content: This dataset contains data for counties with population over 65000, compiled from the 2016 ACS 1-year estimate. ACS 1-year estimates only summarize data for large geographic areas over 65000 population. It provides sufficient data for us to gain insight into internet use.
 
 ## Database Schema
@@ -86,7 +97,7 @@ According to the [source data](https://www.kaggle.com/datasets/madaha/people-wit
 |p_below_middle_school| integer| Education level per population: Below Middle School|
 |p_some_high_school| integer| Education level per population: Some High School|
 |p_high_school_equivalent| integer| Education level per population: High School Equivalent|
-|p_some_college integer| integer | Education level per population: Some College |
+|p_some_college | integer | Education level per population: Some College |
 |p_bachelor_and_above |integer| Education level per population: Bachelors and above|
 |p_below_poverty| integer| Income Level per population: Below Poverty|
 |median_age |numeric| Median age of household per county|
