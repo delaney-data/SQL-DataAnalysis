@@ -1,8 +1,8 @@
 # Data Analysis with SQL
-A project walk-through using intermediate SQL statements to answer questions and provide analytical insights for Data Science or Business Intelligence from a database.
+A walk-through using intermediate SQL statements to provide analytical insights for Data Science or Business Intelligence from a database.
 This project assumes the reader knows the basic syntax and select statements.
 
-### SQL concepts in the project:
+### Concepts covered:
 - Database 
 	- Altering tables, creating new columns
 	- Inserting values, Arithmetic Operators
